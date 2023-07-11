@@ -54,7 +54,7 @@ int main(int ac, char *av[])
 		exit(97);
 	}
 
-	buffer = create_buf(av[2]);
+	buf = create_buf(av[2]);
 	from = open(av[1], O_RDONLY);
 	s = read(from, buf, 1024);
 	to = open(av[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
@@ -67,7 +67,7 @@ int main(int ac, char *av[])
 			exit(98);
 		}
 
-		y = write(to, buf, r);
+		y = write(to, buf, s);
 		if (to == -1 || y == -1)
 		{
 			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", av[2]);
